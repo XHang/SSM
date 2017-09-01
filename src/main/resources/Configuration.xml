@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<!-- 这个配置是配置实体类的别名。将别名配置好，在实体类映射文件的resultType值就可以填别名。否则要填实体类的全称 -->
+	<typeAliases> 
+        <typeAlias alias="User" type="com.ssm.model.User"/> 
+    </typeAliases> 
+	<!-- 关于数据源的配置 -->
+	<environments default="development">
+		<environment id="development">
+			<transactionManager type="JDBC" />
+			<dataSource type="POOLED">
+				<property name="driver" value="com.mysql.jdbc.Driver" />
+				<property name="url" value="jdbc:mysql://localhost/Mybatis" />
+				<property name="username" value="root" />
+				<property name="password" value="tiger" />
+			</dataSource>
+		</environment>
+	</environments>
+	<!-- 指向实体类的映射文件 -->
+	<mappers>
+		<mapper resource="com/ssm/model/user.xml" />
+	</mappers>
+</configuration>

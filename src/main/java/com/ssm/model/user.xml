@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ssm.Mapper.UserMapper">
+   <select id="selectByid" parameterType="int" resultType="User">
+   		select * from user where id=#{id}
+   </select>
+   
+   <insert id="save" parameterType="User">
+   		insert into user values(#{id},#{username})
+   </insert>
+   
+   <delete id="delete" parameterType="int">
+   	  delete from user where id=#{userId}
+   </delete>
+   
+   <update id="update" parameterType="User">
+   	 	update user set username=#{username} where id=#{id}
+   </update>
+   
+   <!-- 通过分页获取用户列表，from是从第几个数据开始取，offset从from开始取，取offset条 -->
+   <select id="getUserByPaging" parameterType="com.ssm.vo.PageParameter"  resultType="User">
+   		select * from user limit #{from},#{offset}
+   </select>
+   <!-- 获取所有用户总数 -->
+   <select id="getUserCount" resultType="int">
+   		select count(*) from user
+   </select>
+</mapper>
